@@ -1,0 +1,14 @@
+Para gerar o JAR do projeto:
+Certificar que o mavem e tomcat estão instalado.
+No projeto, ir em properties -> copiar o local do arquivo e entrar no projeto pelo simbolo do caminho
+No CMD do digitar 'CD' e colar o caminho copiado e entrar.
+Digitar " mvn clean package ", dar um enter e ver o que segui, se der problema em teste no pom.xml
+dentro da tag <properties> digitar: <maven.test.skip>true</maven.test.skip>, isso pula os testes.
+OBS: se mesmo assim não gerar o build, no pom, na tag <build>
+		<pluginManagement> em <plugin> comentar a version.
+o arquivo é gerado no target são gerados os arquivo .jar
+Depois de gerado entrar e copiar o caminho do target e entrar 'cd' C:\Users\hphoe\git\repository15\springboot-rest-api-sample\target
+Nele usar o comando: java -jar "nome do arquivo.jar" gerado
+Ex: java -jar springboot-rest-api-sample-1.0.0-SNAPSHOT.jar
+testa-se com o Postman.
+Assim o projeto deve subir rodando o tomcat no cmd. uzar "ctrl + c para sair

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+
+	<h3>Spring boot REST API CRUD completo jdev Treinamentos</h3>
+
+	<form action="" id="formCadastroUser">
+
+		<div class="mb-3">
+			<label for="id" class="form-label">ID</label> 
+			<input type="text" class="form-control" id="id" readonly="readonly"> 
+		</div>
+		<div class="mb-3">
+			<label for="nome" class="form-label">Nome do usário</label> 
+			<input type="text" class="form-control" id="nome" placeholder="Informe o nome" required="required"> 
+		</div>
+		<div class="mb-3">
+			<label for="idade" class="form-label">Idade</label> 
+			<input type="number" class="form-control" id="idade" > 
+		</div>		
+
+	</form>
+	<div>
+		<button type="button" class="btn btn-primary" onclick="salvarUsuario()">Salvar</button>
+	</div>
+
+	<!-- jquery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" 
+		integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous">
+	</script>
+
+	<!-- JavaScript (Opcional) -->
+	<!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+		crossorigin="anonymous"></script>
+	
+	<!-- funções JavaScript-->	
+	<script type="text/javascript">
+	 	
+		function salvarUsuario() {
+			//pegando os elementos da tela
+			var id = $("#id").val();
+			var nome = $("#nome").val();
+			var idade = $("#idade").val();
+			
+			//alert ("nome: " + nome + " idade: "+ idade);
+			//receita de bolo
+
+				$.ajax({
+  				method: "POST",
+  				url: "salvar"
+				data: JSON.stringify({id : id, nome : nome, idade : idade}),
+				contentType: "application/json; charset=utf-8",
+				success: function (response) {
+					alert ("Salvo com sucesso!")
+				}
+			}).fail(function (xhr, status, errorThrown) {
+					alert ("Erro ao salvar usuario: " + xhr.responseText);
+			});
+		}
+		
+	
+	</script>
+
+</body>
+</html>
