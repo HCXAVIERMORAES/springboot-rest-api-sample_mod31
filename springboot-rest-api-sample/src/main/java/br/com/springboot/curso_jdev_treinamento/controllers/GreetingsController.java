@@ -83,6 +83,7 @@ public class GreetingsController {
     @PostMapping(value = "salvar") //mapeia a url
     @ResponseBody() //descrição da resposta
     public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario) {//recebe os dados para salvar
+    	
     	Usuario user = usuarioRepository.save(usuario); //pega o repositry e salva e retorna o usuario salvo
     	
     	//retorno do end-point
@@ -148,7 +149,7 @@ public class GreetingsController {
     
     @GetMapping(value = "buscarPorNome") //mapeia a url
     @ResponseBody() //descrição da resposta
-    public ResponseEntity<List<Usuario>> buscarPorNome (@RequestParam(name = "name") String name ){ //recebe os dados para consultar
+    public ResponseEntity<List<Usuario>> buscarPorNome ( @RequestParam(name = "name") String name ){ //recebe os dados para consultar
     
     	List<Usuario> usuario = usuarioRepository.buscarPorNome(name.trim().toUpperCase()); //pega o repositry chama o metodo e retorna   em usuario   	
     	 
